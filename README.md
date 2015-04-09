@@ -14,6 +14,7 @@ Per farlo:
 - chiudere vagrant con il comando `vagrant suspend`
 
 Nota: il primo comando `vagrant up` scarica l'installazione di Ubuntu 14.04 (circa 360MB), e può richiedere del tempo. Se si preferisce scaricare il file una volta sola e poi usarlo su più computer.
+
 1. Scaricare https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box
 2. `vagrant box add my-box file:///d:/path/to/virtualbox.box`
 
