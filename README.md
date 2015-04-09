@@ -19,6 +19,6 @@ Per eliminare anche il file di installazione del box: `vagrant box remove ubuntu
 Nota: il primo comando `vagrant up` scarica l'installazione di Ubuntu 14.04 (circa 360MB), e può richiedere del tempo. Se si preferisce scaricare il file una volta sola e poi usarlo su più computer.
 
 1. Scaricare https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box
-2. `vagrant box add ubuntu/trusty64 file:///c:/path/to/trusty-server-cloudimg-amd64-vagrant-disk1.box`
+2. Nella cartella dove è stato salvato il file: `vagrant box add ubuntu/trusty64 trusty-server-cloudimg-amd64-vagrant-disk1.box`
 
 Windows 8 Pro. Se la virtualizzazione Hyper-V è attiva, il sistema non funzionerà (timeout). In questo caso è necessario disattivarla temporaneamente (Win+R... appwiz.cpl... Attivazione o disattivazione delle funzionalità Windows... (Disattivare) Hyper-V). In generale, per diagnosticare eventuali problemi, è sempre possibile eseguire VirtualBox manualmente, ed avviare manualmente la macchina virtuale creata da vagrant.
