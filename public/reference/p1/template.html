@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Il mio primo esempio</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	</head>
+	<body>
+	
+		<div class="container">
+			<h1>PHP Intro: gestione di form</h1>
+			
+			<? if(count($errors)) { ?>
+			<div class='error'>
+				<p>Il form contiene degli errori. Correggi e riprova.</p>
+				<ul>
+				<? foreach($errors as $e) { ?>
+					<li><?=$e?></li>
+				<? } ?>
+				</ul>
+			</div>
+			<? } ?>
+			
+			<form method='post'>
+				<div class="form-group">
+					<label for="fname">Nome</label>
+					<input type="text" class="form-control" id="fname" name='fname' placeholder="Nome">
+				</div>
+				<div class="form-group">
+					<label for="lname">Cognome</label>
+					<input type="text" class="form-control" id="lname" name='lname' placeholder="Cognome">
+				</div>
+				<div class="form-group">
+					<label for="lname">Data di nascita</label>
+					<input type="text" class="form-control" id="dob" name='dob' placeholder="31/12/1980">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" class="form-control" id="email" name='email' placeholder="email@example.com">
+				</div>
+				
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" name='username' placeholder="">
+					<p class="help-block">Solo lettere, numeri e trattini alti.</p>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				</div>
+				
+			
+				<!--<div class="form-group">
+					<label for="exampleInputFile">File input</label>
+					<input type="file" id="exampleInputFile">
+					<p class="help-block">Example block-level help text here.</p>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox"> Check me out
+					</label>
+				</div>-->
+				
+				<button type="submit" class="btn btn-primary">Invia</button>
+			</form>
+		</div>
+
+	
+	</body>
+</html>
