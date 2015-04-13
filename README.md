@@ -22,3 +22,9 @@ Nota: il primo comando `vagrant up` scarica l'installazione di Ubuntu 14.04 (cir
 2. Nella cartella dove è stato salvato il file: `vagrant box add ubuntu/trusty64 trusty-server-cloudimg-amd64-vagrant-disk1.box`
 
 Windows 8 Pro. Se la virtualizzazione Hyper-V è attiva, il sistema non funzionerà (timeout). In questo caso è necessario disattivarla temporaneamente (Win+R... appwiz.cpl... Attivazione o disattivazione delle funzionalità Windows... (Disattivare) Hyper-V). In generale, per diagnosticare eventuali problemi, è sempre possibile eseguire VirtualBox manualmente, ed avviare manualmente la macchina virtuale creata da vagrant.
+
+## NetBeans
+
+Sarà inoltre necessario scaricare e installare NetBeans, da qui: https://netbeans.org/downloads/index.html
+
+Scegliere l'edizione HTML5 & PHP.
