@@ -74,12 +74,16 @@
   - name: create mysql databases
     mysql_db: name={{ item }}
               state=present
+              encoding=utf8
+              collation=utf8_unicode_ci
     with_items:
-      - site_development
-      - site_development_stats
-      - site_testing
-      - site_testing_stats
+      - todolist
+      
+  # Copy database dump file to remote host and restore it to database 'my_db'
+  - copy: src=/vagrant/ansible/templates/todolist.sql dest=/tmp
+  - mysql_db: name=todolist state=import target=/tmp/todolist.sql
 
+  
   - file: path=/etc/mysql/conf.d state=directory
   - name: Set MySQL number of connections
     copy: src=/vagrant/ansible/templates/max_connections.cnf dest=/etc/mysql/conf.d/max_connections.cnf

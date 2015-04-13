@@ -28,14 +28,16 @@ if(count($_POST)) {
 		$errors['email'] = 'Email: valore non valido';
 	}
 	
-	// Validate dob
-	if(!preg_match('#^[0-9]+/[0-9]+/[0-9]+$#', $_POST['dob'])) {
-		$errors['dob'] = 'Data di nascita: inserisci la data in formato gg/mm/aaaa, ad esempio: 31/12/1980';
-	}
-	
 	// Validate username
 	if(!preg_match('#^[a-zA-Z0-9_-]{5,10}$#', $_POST['username'])) {
 		$errors['username'] = 'Username: inserisci da 5 a 10 lettere non accentate, numeri o trattini.';
+	}
+	
+	///TODO: validate password
+	
+	// Validate privacy
+	if(!isset($_POST['privacy'])) {
+		$errors['privacy'] = 'Privacy: non possiamo procedere senza il consenso al trattamento dei dati.';
 	}
 }
 
