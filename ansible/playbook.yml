@@ -105,8 +105,8 @@
       - php5-fpm      
       - php5-gd       
       - php5-json     
-      - php5-mcrypt   
-      - php5-mysql    
+      - php5-mcrypt
+      - php5-mysqlnd
       - php5-readline 
       - php5-xdebug   
 

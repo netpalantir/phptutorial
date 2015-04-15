@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="it">
 	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<title>ToDo List</title>
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>CorsoPHP: Pt. 1</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- Latest compiled and minified Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="template.css" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 	</head>
 	<body>
 	
 		<div class="container">
-			<h1>Cose da fare</h1>
+			<h1>PHP Intro: gestione di form</h1>
 			
 			<? if(count($errors)) { ?>
 			<div class='error'>
@@ -28,30 +28,49 @@
 			<? } ?>
 			
 			<form method='post'>
-				<div class='todo-items'>
-					<div class="form-group todo-item">
-						<input type="checkbox" name="" value="1">
-						<div class='expiration'>31/12/2015</div>
-						<div class='title'>Esempio di TO-DO</div>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-primary">Aggiorna</button>
-			</form>
-			
-			<h2>Crea nuovo punto</h2>
-			
-			<form method='post' class='new-item-form  form-inline'>
 				<div class="form-group">
-					<label for="fname">Scadenza</label>
-					<input type="text" class="form-control" id="title" name='title' placeholder="31/12/2015">
+					<label for="fname">Nome</label>
+					<input type="text" class="form-control" id="fname" name='fname' placeholder="Nome">
+				</div>
+				<div class="form-group">
+					<label for="lname">Cognome</label>
+					<input type="text" class="form-control" id="lname" name='lname' placeholder="Cognome">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" class="form-control" id="email" name='email' placeholder="email@example.com">
 				</div>
 				
 				<div class="form-group">
-					<label for="fname">Titolo</label>
-					<input type="text" class="form-control" id="title" name='title' placeholder="Titolo">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" name='username' placeholder="">
+					<p class="help-block">Solo lettere, numeri e trattini alti.</p>
 				</div>
 				
-				<button type="submit" class="btn btn-primary">Crea to-do</button>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				</div>
+				
+				<div class="form-group">
+					<label>Privacy</label><br/>
+					<input type="checkbox" id="privacy" name="privacy" value="1">
+					<label for="password">Acconsento al trattamento dei dati</label>
+				</div>
+				
+			
+				<!--<div class="form-group">
+					<label for="exampleInputFile">File input</label>
+					<input type="file" id="exampleInputFile">
+					<p class="help-block">Example block-level help text here.</p>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox"> Check me out
+					</label>
+				</div>-->
+				
+				<button type="submit" class="btn btn-primary">Invia</button>
 			</form>
 		</div>
 

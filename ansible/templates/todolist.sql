@@ -1,3 +1,6 @@
+drop table if exists todoitem;
+drop table if exists todouser;
+
 create table todouser (
   id int not null auto_increment,
   fname varchar(255) not null,

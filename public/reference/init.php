@@ -1,14 +1,18 @@
- <?php
- 
+<?php
+
+session_start();
 include('functions.php');
 
-Global $conn;
-$conn = mysqli_connect("localhost", "vagrant", "vagrant", "todolist");
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
+global $conn;
+$conn = new mysqli("localhost", "vagrant", "vagrant", "todolist");
+if ($conn->connect_errno) {
+  printf("Connect failed: %s\n", $conn->connect_error);
+  exit();
 }
 
-if (!mysqli_set_charset($conn, "utf8")) {
-    printf("Error loading character set utf8: %s\n", mysqli_error($conn));
+if ( ! $conn->set_charset("utf8")) {
+  printf("Error loading character set utf8: %s\n", $conn->error);
 }
+
+$driver = new mysqli_driver();
+$driver->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;

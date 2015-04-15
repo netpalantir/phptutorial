@@ -1,0 +1,27 @@
+.todo-items {
+	padding: 20px 0;
+}
+
+.todo-item {
+	border-bottom: 1px solid lightgray;
+	height: 2em;
+	font-size: 130%;
+}
+
+.todo-item input {
+	float: left;
+	min-width: 2em;
+}
+
+.todo-item .expiration {
+	float: left;
+	min-width: 6em;
+}
+
+.todo-item .title {
+	
+}
+
+h2 {
+	padding-top: 20px;
+}
