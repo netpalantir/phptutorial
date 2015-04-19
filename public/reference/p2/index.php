@@ -10,7 +10,7 @@ $form = array();
 if(count($_POST)) {
 	// Validate first name
   $form['fname'] = $_POST['fname'];
-	if(strlen($_POST['fname']) == 0) {
+	if(!isset($_POST['fname']) || strlen($_POST['fname']) == 0) {
 		$errors['fname'] = 'Nome: campo obbligatorio';
 	}
 	else if(strlen($_POST['fname']) > 50) {
@@ -19,30 +19,32 @@ if(count($_POST)) {
 	
 	// Validate last name
   $form['lname'] = $_POST['lname'];
-	if(strlen($_POST['lname']) == 0) {
+	if(!isset($_POST['lname']) || strlen($_POST['lname']) == 0) {
 		$errors['lname'] = 'Cognome: campo obbligatorio';
 	}
-	else if(strlen($_POST['fname']) > 50) {
+	else if(strlen($_POST['lname']) > 50) {
 		$isValid = false;
 		$errors['lname'] = 'Cognome: valore troppo lungo';
 	}
 	
 	// Validate email
   $form['email'] = $_POST['email'];
-	if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) {
+	if(!isset($_POST['email']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) {
 		$errors['email'] = 'Email: valore non valido';
 	}
 	
 	// Validate username
   $form['username'] = $_POST['username'];
-	if(!preg_match('#^[a-zA-Z0-9_-]{5,10}$#', $_POST['username'])) {
+	if(!isset($_POST['username']) || !preg_match('#^[a-zA-Z0-9_-]{5,10}$#', $_POST['username'])) {
 		$errors['username'] = 'Username: inserisci da 5 a 10 lettere non accentate, numeri o trattini.';
 	}
 
   // Validate password
   $form['password'] = $_POST['password'];
-  if(mb_strlen($_POST['password']) < 6) {
+  if(!isset($_POST['password']) || mb_strlen($_POST['password']) < 6) {
     $errors['password'] = 'La password deve essere di almeno 8 caratteri.';
+  }else if(!isset($_POST['password2']) || $_POST['password'] != $_POST['password2']) {
+    $errors['password2'] = 'Le due password non coincidono.';
   }
 	
 	// Validate privacy
@@ -79,7 +81,3 @@ if(count($_POST)) {
 }
 
 include('template.html');
-
-// Do not close your php file here: leave it open, so no extra spaces in the end
-// mess up with it!
-// ?>

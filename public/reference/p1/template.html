@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 	</head>
 	<body>
@@ -49,7 +49,12 @@
 				
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" placeholder="Password">
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				</div>
+
+				<div class="form-group">
+					<label for="password2">Digita nuovamente la password</label>
+					<input type="password" class="form-control" id="password2" name="password2" placeholder="Password">
 				</div>
 				
 				<div class="form-group">
@@ -57,18 +62,7 @@
 					<input type="checkbox" id="privacy" name="privacy" value="1">
 					<label for="password">Acconsento al trattamento dei dati</label>
 				</div>
-				
-			
-				<!--<div class="form-group">
-					<label for="exampleInputFile">File input</label>
-					<input type="file" id="exampleInputFile">
-					<p class="help-block">Example block-level help text here.</p>
-				</div>
-				<div class="checkbox">
-					<label>
-					<input type="checkbox"> Check me out
-					</label>
-				</div>-->
+
 				
 				<button type="submit" class="btn btn-primary">Invia</button>
 			</form>

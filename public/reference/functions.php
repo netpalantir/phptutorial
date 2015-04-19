@@ -10,3 +10,7 @@ function diepre($x) {
 	pre($x);
 	die();
 }
+
+function q($x) {
+	return htmlspecialchars($x);
+}
