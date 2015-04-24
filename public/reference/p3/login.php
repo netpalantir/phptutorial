@@ -1,34 +1,49 @@
 <?php
 
 include('../init.php');
-global $conn;
 
+// tell the interpreter that we know that $conn is global
+global $conn;
 $errors = array();
 
 if(count($_POST)) {
   // Validate username
   if(mb_strlen($_POST['username']) < 5 || mb_strlen($_POST['username']) > 20 ||
      mb_strlen($_POST['password']) < 5 || mb_strlen($_POST['password']) > 20 ) {
-    $errors['username'] = 'Username o password non valide 1.';
+    $errors['username'] = 'Username o password non validi.';
   }
 
-  // If no errors
   if(!$errors) {
-    $stmt = $conn->prepare('select * from todouser where username = ? and password = ?');
+    $user = array();
+
+    // Valida le credenziali dell'utente
+    $sql = "select * from todouser where " .
+           "username = ? " .
+           "and password = ?";
+    $stmt = $conn->prepare($sql);
+
     $stmt->bind_param('ss', $_POST['username'], $_POST['password']);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_array();
-    $stmt->close();
 
-    if($row) {
-      // Login succeeded!
+    if ($result = $stmt->get_result()) {
+      if($result->num_rows == 0) {
+        $errors['username'] = 'Username o password non validi (2).';
+      }
+      else {
+        $row = $result->fetch_assoc();
+        $user['username'] = $row['username'];
+        $user['id'] = $row['id'];
+      }
 
-      // Avoid session fixation
+      /* free result set */
+      $result->close();
+    }
+
+
+    if(!$errors) {
       session_regenerate_id();
+      $_SESSION['user'] = $user;
 
-      $_SESSION['username'] = $row['username'];
-      $_SESSION['userid'] = $row['id'];
       header('Location: index.php');
       exit();
     }

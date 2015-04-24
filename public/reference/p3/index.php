@@ -2,42 +2,49 @@
 
 include('../init.php');
 
-$errors = array();
-$items = array();
-
-// Check login
-if(!$_SESSION['userid']) {
+// check if we are logged in. If not, redirect to login.php
+if(!$_SESSION['user']) {
   header('Location: login.php');
   exit();
 }
 
-// Check if we need to add anything
-if(isset($_POST['add'])) {
-	$exp = null;
-	$title = $_POST['title'];
+$form = array(
+  'title' => '',
+  'exp' => '',
+);
+$errors = array();
 
-	// Validate title
-	if(!mb_strlen($title) || mb_strlen($title) > 255) {
-		$errors[] = 'Il titolo non può essere vuoto.';
-	}
-	
-	// Validate exp
-	if($_POST['exp']) {
-		$date = date_create_from_format('d/m/Y', $_POST['exp']);
-		if($date->getTimestamp() < time()) {
-			$errors[] = 'Data di scadenza: non può essere nel passato.';
-		}
-		else {
-		  $exp = $date->format('c');
-		}
-	}
-	
-	// If no errors, then add it
-	if(!$errors) {
-		$stmt = $conn->prepare('insert into todoitem (title, expDate, userId) values(?, ?, ?)');
-		$stmt->bind_param('ssi', $title, $exp, $_SESSION['userid']);
-		$stmt->execute();
-	} 
+if(isset($_POST['add'])) {
+  $form['title'] = $_POST['title'];
+  if(!strlen($_POST['title'])) {
+    $errors['title'] = 'Titolo: non puo` essere vuoto';
+  }
+
+  $dateToDb = null;
+  if(isset($_POST['exp']) && strlen($_POST['exp']) > 0) {
+    $form['exp'] = $_POST['exp'];
+
+    $exp = date_create_from_format('d/m/Y', $_POST['exp']);
+    if($exp !== false && $exp->getTimestamp() > time()) {
+      $dateToDb = strftime('%F', $exp->getTimestamp());
+      // $dateToDb = $exp->format('c');
+    }
+    else {
+      $errors['exp'] = 'Data di scadenza: data non valida';
+    }
+  }
+
+  if(!$errors) {
+    $sql = "insert into todoitem (userId, title, expDate) values(?, ?, ?)";
+    $stmt = $conn->prepare($sql) or die("Errore nell'esecuzione della query");
+    $stmt->bind_param(
+      'iss',
+      $_SESSION['user']['id'],
+      $_POST['title'],
+      $dateToDb
+    );
+    $stmt->execute();
+  }
 }
 
 // Fetch all items

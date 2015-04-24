@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 include('functions.php');
 
 global $conn;
@@ -14,5 +15,7 @@ if ( ! $conn->set_charset("utf8")) {
   printf("Error loading character set utf8: %s\n", $conn->error);
 }
 
+
+// Print SQL errors. Not recommended in production.
 $driver = new mysqli_driver();
 $driver->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;

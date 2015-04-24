@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Benvenuto, <?=q($_SESSION['username'])?></h1>
+<h1>Benvenuto, <?=q($_SESSION['user']['username'])?></h1>
 
 <? if(count($errors)) { ?>
 <div class='error'>
@@ -30,14 +30,14 @@
 <form method='post' class='new-item-form  form-inline'>
 	<div class="form-group">
 		<label for="fname">Scadenza</label>
-		<input type="text" class="form-control" id="exp" name='exp' placeholder="31/12/2015">
+		<input type="text" class="form-control" id="exp" name='exp' placeholder="31/12/2015" value="<?=htmlspecialchars($form['exp'])?>">
 	</div>
 	
 	<div class="form-group">
 		<label for="fname">Titolo</label>
-		<input type="text" class="form-control" id="title" name='title' placeholder="Titolo">
+		<input type="text" class="form-control" id="title" name='title' placeholder="Titolo" value="<?=htmlspecialchars($form['title'])?>">
 	</div>
 	
-	<button type="submit" name='add' class="btn btn-primary">Crea to-do</button>
+	<button type="submit" name='add' value='1' class="btn btn-primary">Crea nuovo punto</button>
 </form>
 </div>
