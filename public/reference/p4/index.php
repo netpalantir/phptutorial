@@ -12,6 +12,8 @@
  * @return void
  */
 spl_autoload_register(function ($class) {
+	print("Carica la classe: $class\n");
+
     // project-specific namespace prefix
     //$prefix = 'Foo\\Bar\\';
     $prefix = '';
