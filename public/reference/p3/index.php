@@ -13,6 +13,7 @@ $form = array(
   'exp' => '',
 );
 $errors = array();
+$items = array();
 
 if(isset($_POST['add'])) {
   $form['title'] = $_POST['title'];
@@ -49,10 +50,10 @@ if(isset($_POST['add'])) {
 
 // Fetch all items
 $stmt = $conn->prepare('select * from todoitem where userId= ? order by expDate asc, id asc');
-$stmt->bind_param('i', $_SESSION['userid']);
+$stmt->bind_param('i', $_SESSION['user']['id']);
 $stmt->execute();
 $result = $stmt->get_result();
-while($row = $result->fetch_array()) {
+while($row = $result->fetch_assoc()) {
 	$row['expTimestamp'] = strtotime($row['expDate']);
 	$items[] = $row;
 }

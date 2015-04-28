@@ -17,7 +17,9 @@
 <?php foreach($items as $item) { ?>
 		<div class="form-group todo-item">
 			<input type="checkbox" name="" value="1">
-			<div class='expiration'><?=strftime('%d/%m/%Y', $item['expTimestamp'])?></div>
+			<div class='expiration'><?=
+        $item['expTimestamp'] != '' ? strftime('%d/%m/%Y', $item['expTimestamp']) : ''
+        ?></div>
 			<div class='title'><?=q($item['title'])?></div>
 		</div>
 <? } ?>
